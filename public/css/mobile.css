@@ -22,7 +22,6 @@
 
 #infoPanel {
   -webkit-box-orient: vertical;
-  background: -webkit-linear-gradient(bottom, rgb(186,182,184) 15%, rgb(255,255,255) 65%);
   border-top-left-radius: 3%;
   border-top-right-radius: 3%;
   border-bottom-left-radius: 0%;
