@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
+var port = process.env.PORT || 3000;
 
 var shuffle = require("./helpers/shuffle");
 var protocol = require("./helpers/protocol");
@@ -324,6 +325,6 @@ io.on(protocol.PEER_CONNECTED, function(socket) {
 	});
 });
 
-http.listen(80, function() {
-	console.log("listening on *:80");
+http.listen(port, function() {
+	console.log("listening on *:" + port);
 });
