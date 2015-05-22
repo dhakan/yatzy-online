@@ -33,7 +33,6 @@ $(function() {
 				holdDice($(this));
 				yatzy.websocket.holdDice(diceIndex);
 			}
-			checkbox.prop("checked", !checkbox.is(":checked"));
 		}
 	}
 
@@ -60,12 +59,16 @@ $(function() {
 		$dice.animate({
 			opacity: 0.2
 		});
+
+		$dice.next().prop("checked", true);
 	}
 
 	function unholdDice($dice) {
 		$dice.animate({
 			opacity: 1
 		});
+
+		$dice.next().prop("checked", false);
 	}
 
 	yatzy.websocket.onHoldDice(function(diceIndex) {
@@ -126,19 +129,32 @@ $(function() {
 	}
 
 	function updateDiceImagesAndRollNumber(dice, rollNumber) {
-		changeDiceImages(dice);
+		var $imagesOfDiceRethrown = $("#imgList input:not(:checked)")
+			.prev()
+			.each(function() {
+				var $imageOfDiceRethrown = $(this);
+
+				if ($imageOfDiceRethrown.data("hasBeenRotated")) {
+
+					$imageOfDiceRethrown.css("transform", "rotateX(0deg) rotateY(0deg) rotate(0deg)");
+					$imageOfDiceRethrown.data("hasBeenRotated", false);
+				} else {
+					$imageOfDiceRethrown.css("transform", "rotateX(1080deg) rotateY(1080deg) rotate(720deg)");
+					$imageOfDiceRethrown.data("hasBeenRotated", true);
+				}
+			});
+
+		changeDiceImages(dice, $imagesOfDiceRethrown);
 		setRoundText(rollNumber + 1);
 	}
 
 	yatzy.websocket.onShowDice(function(dice) {
-		changeDiceImages(dice);
-		setRoundText(1);
+		updateDiceImagesAndRollNumber(dice, 0);
 		showDiceAndRollNumber();
 	});
 
 	yatzy.websocket.onUpdateDice(function(data) {
-		changeDiceImages(data.dice);
-		setRoundText(data.rollNumber + 1);
+		updateDiceImagesAndRollNumber(data.dice, data.rollNumber);
 
 		if (data.rollNumber === 2) {
 			fadeInDices();
@@ -652,10 +668,10 @@ function setPlayerName(name) {
 /* Changes the dice pictures of the dices not on hold,
 i.e the ones rethrown. */
 
-function changeDiceImages(dices) {
+function changeDiceImages(dices, $diceImages) {
 	"use strict";
-	$("#imgList input:not(:checked)").each(function(i) {
+	$diceImages.each(function(i) {
 		// Change the picture only of the dices not on hold
-		$(this).prev().prop("src", "resources/d" + dices[i].val + ".png");
+		$(this).prop("src", "resources/d" + dices[i].val + ".png");
 	});
 }

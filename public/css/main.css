@@ -124,6 +124,10 @@ h3 {
   padding: 0;
 }
 
+#imgList img {
+  transition: transform 1000ms ease-in-out;
+}
+
 #imgList input {
   display: none;
 }
