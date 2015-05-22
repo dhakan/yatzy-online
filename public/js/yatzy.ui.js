@@ -190,6 +190,12 @@ $(function() {
 			inactivatePlayButton();
 		}
 
+		if (player.wasInGame) {
+			dicePanel.hide();
+			playerForm.show();
+			$(".scoreBoardCells").remove();
+		}
+
 		logNewMessage("A player " + player.name + " disconnected");
 	});
 

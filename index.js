@@ -307,20 +307,25 @@ io.on(protocol.PEER_CONNECTED, function(socket) {
 			return playerWasInGame;
 		}
 
-		var playerWithNameSubmitted = clearPlayerFromServer();
-
-		if (playerWithNameSubmitted !== undefined) {
-			socket.broadcast.emit(protocol.PLAYER_DISCONNECTED, playerWithNameSubmitted);
-		} else {
-			console.log("Player disconnected without submitted name...");
-		}
-
 		if (playing) {
 			var playerWasInGame = clearPlayerFromInGame();
 
 			if (playerWasInGame) {
 				playing = false;
 			}
+		}
+
+		var playerWithNameSubmitted = clearPlayerFromServer();
+
+		if (playerWithNameSubmitted !== undefined) {
+
+			if (playerWasInGame) {
+				playerWithNameSubmitted.wasInGame = true;
+			}
+
+			socket.broadcast.emit(protocol.PLAYER_DISCONNECTED, playerWithNameSubmitted);
+		} else {
+			console.log("Player disconnected without submitted name...");
 		}
 	});
 });
