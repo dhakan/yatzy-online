@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Yatzy</title>
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/mobile.css" media="only screen and (max-device-width:1021px)"/>
+</head>
+<body>
+	<div id="box">
+		<div id="header">
+			<h3>YATZY ONLINE PROTOTYPE v.1.0</h3>
+		</div>
+		<div id="content">
+			<div id="dicePanel">
+				<h2 id="playerName"></h2>
+				<ul id="imgList">
+					<li><img src="resources/d1.png"><input type="checkbox"></input></li>
+					<li><img src="resources/d2.png"><input type="checkbox"></input></li>
+					<li><img src="resources/d3.png"><input type="checkbox"></input></li>
+					<li><img src="resources/d4.png"><input type="checkbox"></input></li>
+					<li><img src="resources/d5.png"><input type="checkbox"></input></li>
+				</ul>
+				<input id="rollBtn" type="button" value="Roll"></input>
+				<h2 id="roundText"></h2>
+			</div>
+			<form id="playerForm">
+				<input id="playBtn" type="button" value="Play" disabled/>
+				<span id="onlineStatus" class="offline">OFFLINE</span>
+				</br>
+				<span>Your player name: <input id="playerNameInput" type="text"/></span>
+				<input id="submitPlayerNameBtn" type="button" value="Submit Name"/> </br>
+				<h3>Other connected players:</h3>
+				<ul id="players"></ul>
+				<h3>Network log:</h3>
+				<ul id="networkLog"></ul>
+			</form>
+			<div id="infoPanel">
+				<div id="scoreTable">
+					<table>
+						<tbody>
+							<tr class="noClickRow"><td><strong>COMBINATIONS</strong></td></tr>
+							<tr id="acesRow" class="upperSection"><td>Aces</td></tr>
+							<tr id="twosRow" class="upperSection"><td>Twos</td></tr>
+							<tr id="threesRow" class="upperSection"><td>Threes</td></tr>
+							<tr id="foursRow" class="upperSection"><td>Fours</td></tr>
+							<tr id="fivesRow" class="upperSection"><td>Fives</td></tr>
+							<tr id="sixesRow" class="upperSection"><td>Sixes</td></tr>
+							<tr id="subTotalRow" class="noClickRow totalScore"><td><strong>SUBTOTAL</strong></td></tr>
+							<tr id="bonusRow" class="noClickRow totalScore"><td><strong>BONUS</strong></td></tr>
+							<tr id="onePairRow" class="totalScore"><td>One pair</td></tr>
+							<tr id="twoPairsRow" class="totalScore"><td>Two pairs</td></tr>
+							<tr id="threeOfAKindRow" class="totalScore"><td>Three of a kind</td></tr>
+							<tr id="fourOfAKindRow" class="totalScore"><td>Four of a kind</td></tr>
+							<tr id="smallStraightRow" class="totalScore"><td>Small straight</td></tr>
+							<tr id="bigStraightRow" class="totalScore"><td>Big straight</td></tr>
+							<tr id="fullHouseRow" class="totalScore"><td>Full house</td></tr>
+							<tr id="chanceRow" class="totalScore"><td>Chance</td></tr>
+							<tr id="yatzyRow" class="totalScore"><td>Yatzy</td></tr>
+							<tr id="totalRow" class="noClickRow"><td><strong>TOTAL</strong></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+		<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="js/yatzy.js"></script>
+		<script src="js/yatzy.dice.js"></script>
+		<script src="js/yatzy.ui.js"></script>
+		<script src="js/yatzy.logic.js"></script>
+		<script src="js/yatzy.websocket.js"></script>
+	</div>
+</body>
+</html>

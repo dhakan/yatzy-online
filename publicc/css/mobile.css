@@ -1,0 +1,51 @@
+#header {
+  font-size: 4em;
+}
+
+
+#content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-flex: 1;
+  text-align: center;
+  height: 100%;
+}
+
+#dicePanel {
+  -webkit-box-orient: vertical;
+  width: 100%;
+  height: 35.7%;
+  overflow: scroll;
+  display: none;
+  margin-top: 150px;
+}
+
+#infoPanel {
+  -webkit-box-orient: vertical;
+  background: -webkit-linear-gradient(bottom, rgb(186,182,184) 15%, rgb(255,255,255) 65%);
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+  border-bottom-left-radius: 0%;
+  width: 100%;
+  height: 43.9%;
+  overflow: scroll;
+}
+
+#playerForm {
+  width: 100%;
+  height: 29.8%;
+}
+
+#infoPanel tr, td {
+  border: 5px solid black;
+  text-align: center;
+  font-size: 2em;
+}
+
+td {
+  width: 80px;
+}
+
+.menuButtons {
+font-size: 4em;
+}

@@ -1,0 +1,196 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+#header {
+	color: white;
+	font-size: 2.0em;
+	text-align: center;
+	background: -webkit-linear-gradient(bottom, rgb(236,111,102) 15%, rgb(243,161,131) 65%);
+}
+
+#box {
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  min-width: 600px;
+}
+
+#content {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-flex: 1;
+  text-align: center;
+  height: 100%;
+}
+
+#onlineStatus {
+  padding: 5px;
+}
+
+#players, #networkLog {
+  list-style: none;
+}
+
+#players li, #networkLog li {
+  font-size: 1.4em;
+}
+
+#networkLog li {
+  transition: transform 800ms ease-in-out;
+}
+
+.online {
+  background-color: #9BF000;
+}
+
+.offline {
+  background-color: #ec3333;
+}
+
+#playerForm {
+  margin-top: 250px;
+  -webkit-box-flex: 3;
+}
+
+#playBtn {
+  border-radius: 15%;
+  width: auto;
+  height: auto;
+  font-size: 1.4em;
+  font-family: times;
+  background: -webkit-linear-gradient(bottom, rgb(236,111,102) 15%, rgb(243,161,131) 65%);
+  color: white;
+  opacity: 0.2;
+}
+
+#playBtn:hover {
+  background: -webkit-linear-gradient(bottom, rgb(243,161,131) 15%, rgb(236,111,102) 65%);
+}
+
+.textFieldsListItems {
+  font-size: 1.4em;
+  font-family: times;
+}
+
+.textFieldsListItems input {
+  font-size: 1em;
+  width: 150px;
+  margin-left: 10px;
+}
+
+#playerNameList {
+  list-style-type: none;
+}
+
+#dicePanel {
+  margin-top: 180px;
+  -webkit-box-flex: 3;
+  overflow: scroll;
+  display: none;
+}
+
+#dicePanel li {
+  display: inline;
+}
+
+#rollBtn {
+  font-family: times;
+  color: white;
+  background: -webkit-linear-gradient(bottom, rgb(236,111,102) 15%, rgb(243,161,131) 65%);
+  display: inline;
+  border-radius: 15%;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#rollBtn:hover {
+  background: -webkit-linear-gradient(bottom, rgb(243,161,131) 15%, rgb(236,111,102) 65%);
+}
+
+#imgList {
+  padding: 0;
+}
+
+#imgList input {
+  display: none;
+}
+
+#infoPanel {
+  background: -webkit-linear-gradient(bottom, rgb(236,111,102) 15%, rgb(243,161,131) 65%);
+  border-left: 1px solid black;
+  border-top-left-radius: 3%;
+  border-bottom-left-radius: 3%;
+  overflow: scroll;
+}
+
+#scoreTable table {
+	border-collapse: collapse;
+}
+
+#scoreTable tr, td {
+	border: 1px solid black;
+	text-align: center;
+	font-size: 1.25em;
+}
+
+#scoreTable .noClickRow {
+  border: 3px solid black;
+  font-weight: bold;
+}
+
+#rulesTable {
+  display: none;  
+  font-size: 1.1em;
+}
+
+.activeCellInColumn, #playBtn{
+  cursor: pointer;
+}
+
+td {
+  width: 50px;
+}
+
+#menuBar {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	border-top: 1px solid #333;
+	text-align: center;
+}
+
+.menuButtons {
+	color: white;
+	text-align: center;
+	font-size: 2.5em;
+	-webkit-box-flex: 1;
+	border: 1px solid black;
+  background: -webkit-linear-gradient(bottom, rgb(53,52,54) 15%, rgb(122,122,120) 65%);
+}
+
+.menuButtons:hover {
+  cursor: pointer;
+  background: -webkit-linear-gradient(bottom, rgb(122,122,120) 15%, rgb(53,52,54) 65%);
+}
+
+#highscoresBtn {
+  opacity: 0.3;
+}
+
+img {
+    cursor: pointer;
+    height: 120px;
+    width: 120px;
+}
