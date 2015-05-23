@@ -187,10 +187,6 @@ yatzy.logic = (function() {
 			}
 
 			roundNumber = roundNumber + 1;
-
-			if (roundNumber === 3) {
-				fadeInDices();
-			}
 		},
 
 		rollAll: function() {

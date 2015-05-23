@@ -103,10 +103,11 @@ $(function() {
 
 			// Traverses through all of the checkboxes.
 			$("#imgList input").each(function(i) {
-				if (!$(this).is(":checked")) {
+				if ($(this).is(":checked") === false) {
 					dicesToThrowAgain.push(dice[i]);
 				}
 			});
+
 			yatzy.logic.roll(dicesToThrowAgain);
 
 			updateDiceImagesAndRollNumber(dice, rollNr);
@@ -119,18 +120,35 @@ $(function() {
 	});
 
 	function showDiceAndRollNumber() {
-		fadeInDices();
-
 		$diceImages.css("visibility", "visible");
+
+		fadeInDices();
 
 		$("#roundText").animate({
 			opacity: 1
-		});
+		}, 500);
 	}
 
 	function updateDiceImagesAndRollNumber(dice, rollNumber) {
-		var $imagesOfDiceRethrown = $("#imgList input:not(:checked)")
-			.prev()
+		var $imagesOfDiceRethrown = $("#imgList input:not(:checked)").prev(),
+			firstTransitionDone = false;
+
+		$("#imgList")
+			.one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
+
+				if (firstTransitionDone === false) {
+					changeDiceImages(dice);
+					setRoundText(rollNumber + 1);
+
+					if (rollNumber === 2) {
+						fadeInDices();
+					}
+
+					firstTransitionDone = true;
+				}
+			});
+
+		$imagesOfDiceRethrown
 			.each(function() {
 				var $imageOfDiceRethrown = $(this);
 
@@ -143,9 +161,6 @@ $(function() {
 					$imageOfDiceRethrown.data("hasBeenRotated", true);
 				}
 			});
-
-		changeDiceImages(dice, $imagesOfDiceRethrown);
-		setRoundText(rollNumber + 1);
 	}
 
 	yatzy.websocket.onShowDice(function(dice) {
@@ -155,10 +170,6 @@ $(function() {
 
 	yatzy.websocket.onUpdateDice(function(data) {
 		updateDiceImagesAndRollNumber(data.dice, data.rollNumber);
-
-		if (data.rollNumber === 2) {
-			fadeInDices();
-		}
 	});
 
 	yatzy.websocket.onConnectedSuccessfully(function() {
@@ -458,6 +469,8 @@ $(function() {
 				});
 			}
 
+			resetStateOfDiceAndRoundNumber();
+
 			yatzy.websocket.saveScoreboardCellValues(scoreboardCellsToSendToOtherPlayers);
 		}
 
@@ -502,10 +515,11 @@ $(function() {
 	}
 
 	function assembleWinnersText(players, numberOfPlayersInvolvedInTie) {
-		var winnersText = "The winner is ";
+		var winnersText = "The winner is ",
+			finalScore = players[0].finalScore;
 
 		if (numberOfPlayersInvolvedInTie === undefined) {
-			winnersText += players[0].name + " with a score of " + players[0].finalScore;
+			winnersText += players[0].name + " with a score of " + finalScore;
 		} else {
 			winnersText = "The winners are ";
 
@@ -513,7 +527,7 @@ $(function() {
 				winnersText += players[i].name + (i < numberOfPlayersInvolvedInTie - 1 ? ", " : "");
 			}
 
-			winnersText += " with a score of " + players[i].finalScore;
+			winnersText += " with a score of " + finalScore;
 		}
 
 		return winnersText;
@@ -557,6 +571,20 @@ $(function() {
 		}
 	}
 
+	function resetStateOfDiceAndRoundNumber() {
+		console.log("resetStateOfDiceAndRoundNumber()");
+		fadeOutDices();
+
+		$("#roundText").animate({
+			opacity: 0
+		}, 500, function() {
+			console.log("ROUND IS EMPTY!!");
+			$(this).text("");
+		});
+
+		$("#imgList input").prop("checked", false);
+	}
+
 	yatzy.websocket.onPlayNextRound(function(playerTurn) {
 		var isYourTurn = playerYatzyColumn === playerTurn;
 
@@ -569,16 +597,15 @@ $(function() {
 
 		yatzy.logic.nextGameRound();
 
-		fadeOutDices();
-
-		$("#roundText").animate({
-			opacity: 0
-		}, 500, function() {
-			$(this).text("");
-		});
-
-		$("#imgList input").prop("checked", false);
+		resetStateOfDiceAndRoundNumber();
 	});
+
+	function fadeInDices() {
+		"use strict";
+		$diceImages.animate({
+			opacity: 1
+		}, 500);
+	}
 
 	function fadeOutDices() {
 		$diceImages.animate({
@@ -614,6 +641,13 @@ $(function() {
 			});
 	}
 
+	function changeDiceImages(dice) {
+		"use strict";
+		$diceImages.each(function(i) {
+			$(this).prop("src", "resources/d" + dice[i].val + ".png");
+		});
+	}
+
 	function getPlayerFinalScore() {
 		"use strict";
 		var playerTotalScore = 0;
@@ -644,17 +678,6 @@ $(function() {
 	}
 });
 
-function fadeInDices() {
-	"use strict";
-	$("#imgList input").each(function() {
-		$(this).prop("checked", false);
-		// Fades in all pictures to full opacity
-		$(this).prev().animate({
-			opacity: 1
-		}, 500);
-	});
-}
-
 function setRoundText(rollNr) {
 	"use strict";
 	$("#roundText").text("ROLL " + rollNr);
@@ -663,15 +686,4 @@ function setRoundText(rollNr) {
 function setPlayerName(name) {
 	"use strict";
 	$("#playerName").text(name);
-}
-
-/* Changes the dice pictures of the dices not on hold,
-i.e the ones rethrown. */
-
-function changeDiceImages(dices, $diceImages) {
-	"use strict";
-	$diceImages.each(function(i) {
-		// Change the picture only of the dices not on hold
-		$(this).prop("src", "resources/d" + dices[i].val + ".png");
-	});
 }
