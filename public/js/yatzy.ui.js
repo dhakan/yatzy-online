@@ -572,13 +572,11 @@ $(function() {
 	}
 
 	function resetStateOfDiceAndRoundNumber() {
-		console.log("resetStateOfDiceAndRoundNumber()");
 		fadeOutDices();
 
 		$("#roundText").animate({
 			opacity: 0
 		}, 500, function() {
-			console.log("ROUND IS EMPTY!!");
 			$(this).text("");
 		});
 
