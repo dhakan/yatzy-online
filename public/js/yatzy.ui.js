@@ -253,6 +253,7 @@ $(function() {
 		yatzy.logic.playGame(data.players);
 		$diceImages.css("visibility", "hidden").css("opacity", 0);
 		$("#roundText").css("opacity", 0);
+		$("#imgList input").prop("checked", false);
 	}
 
 	yatzy.websocket.onPlayerNameAlreadyChosenByYourself(function(playerName) {
