@@ -423,7 +423,9 @@ $(function() {
 			clickedScoreboardCellToSendToOtherPlayers,
 			subTotalCellToSendToOtherPlayers,
 			bonusCellToSendToOtherPlayers,
-			scoreboardCellsToSendToOtherPlayers = [];
+			scoreboardCellsToSendToOtherPlayers = [],
+			playerFinalScore,
+			totalCellToSendToOtherPlayers;
 
 		if (!$clickedScoreboardCell.hasClass("clicked") &&
 			($clickedScoreboardCell.hasClass("activeCellInColumn"))) {
@@ -451,28 +453,30 @@ $(function() {
 				scoreboardCellsToSendToOtherPlayers.push(bonusCellToSendToOtherPlayers);
 
 			if (numberOfPlayerScoreboardCellsFilled === 15) {
-				var playerFinalScore = getPlayerFinalScore();
+				playerFinalScore = getPlayerFinalScore();
 
 				$("#totalRow :nth-child(" + (playerYatzyColumn + 2) + ")")
 					.text(playerFinalScore);
 
-				var totalCellToSendToOtherPlayers = {
+				totalCellToSendToOtherPlayers = {
 					rowId: "TOTAL",
 					yatzyColumn: playerYatzyColumn,
 					score: getPlayerFinalScore()
 				};
 
 				scoreboardCellsToSendToOtherPlayers.push(totalCellToSendToOtherPlayers);
-
-				yatzy.websocket.playerColumnComplete({
-					yatzyColumn: playerYatzyColumn,
-					finalScore: playerFinalScore
-				});
 			}
 
 			resetStateOfDiceAndRoundNumber();
 
 			yatzy.websocket.saveScoreboardCellValues(scoreboardCellsToSendToOtherPlayers);
+
+			if (totalCellToSendToOtherPlayers !== undefined) {
+				yatzy.websocket.playerColumnComplete({
+					yatzyColumn: playerYatzyColumn,
+					finalScore: playerFinalScore
+				});
+			}
 		}
 
 		// Updates the subtotal score
