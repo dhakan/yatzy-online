@@ -150,14 +150,15 @@ $(function() {
 
 		$imagesOfDiceRethrown
 			.each(function() {
-				var $imageOfDiceRethrown = $(this);
+				var $imageOfDiceRethrown = $(this),
+					randomRotateValue = Math.ceil(Math.random() * 30) - 15;
 
 				if ($imageOfDiceRethrown.data("hasBeenRotated")) {
 
-					$imageOfDiceRethrown.css("transform", "rotateX(0deg) rotateY(0deg) rotate(0deg)");
+					$imageOfDiceRethrown.css("transform", "rotateX(0deg) rotateY(0deg) rotate(" + randomRotateValue + "deg)");
 					$imageOfDiceRethrown.data("hasBeenRotated", false);
 				} else {
-					$imageOfDiceRethrown.css("transform", "rotateX(1080deg) rotateY(1080deg) rotate(720deg)");
+					$imageOfDiceRethrown.css("transform", "rotateX(1080deg) rotateY(1080deg) rotate(" + randomRotateValue + "deg)");
 					$imageOfDiceRethrown.data("hasBeenRotated", true);
 				}
 			});
