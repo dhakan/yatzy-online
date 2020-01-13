@@ -3,13 +3,15 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Yatzy</title>
+	<link rel="stylesheet" href="css/reset.css"/>
 	<link rel="stylesheet" href="css/main.css"/>
 	<link rel="stylesheet" href="css/mobile.css" media="only screen and (max-device-width:1021px)"/>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet"> 
 </head>
 <body>
 	<div id="box">
 		<div id="header">
-			<h3>YATZY ONLINE PROTOTYPE v.1.0</h3>
+			<h1>YATZY ONLINE 🎲</h1>
 		</div>
 		<div id="content">
 			<div id="dicePanel">
@@ -24,17 +26,30 @@
 				<input id="rollBtn" type="button" value="Roll"></input>
 				<h2 id="roundText"></h2>
 			</div>
-			<form id="playerForm">
-				<input id="playBtn" type="button" value="Play" disabled/>
-				<span id="onlineStatus" class="offline">OFFLINE</span>
-				</br>
-				<span>Your player name: <input id="playerNameInput" type="text"/></span>
-				<input id="submitPlayerNameBtn" type="button" value="Submit Name"/> </br>
-				<h3>Other connected players:</h3>
-				<ul id="players"></ul>
-				<h3>Network log:</h3>
-				<ul id="networkLog"></ul>
-			</form>
+			<div class="player-form-wrapper">
+				<form id="playerForm">
+					<!-- <div>
+						<span id="onlineStatus" class="offline">OFFLINE</span>
+					</div> -->
+					<input id="playerNameInput" type="text" placeholder="Your player name" autofocus>
+					<div class="button-group">
+						<div>
+							<button id="submitPlayerNameBtn" class="btn info-btn" type="button">Enter lobby</button>
+						</div>
+						<div>
+							<button id="playBtn" class="btn primary-btn" type="button" disabled>Start game</button>
+						</div>
+					</div>
+					<div class="other-players-wrapper">
+						<h2 class="other-players-title">Players in the lobby</h2>
+						<ul id="players"></ul>
+					</div>
+					<div class="network-log-wrapper">
+						<h2 class="network-log-title">Network log</h2>
+						<ul id="networkLog"></ul>
+					</div>
+				</form>
+			</div>
 			<div id="infoPanel">
 				<div id="scoreTable">
 					<table>

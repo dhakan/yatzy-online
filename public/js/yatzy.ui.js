@@ -670,9 +670,9 @@ $(function() {
 	function logNewMessage(message) {
 		var $li = $("<li>").text(message);
 
-		if ($networkLog.children().length >= 5) {
-			$networkLog.find(":last-child").remove();
-		}
+		// if ($networkLog.children().length >= 5) {
+		// 	$networkLog.find(":last-child").remove();
+		// }
 
 		$networkLog.prepend($li);
 
