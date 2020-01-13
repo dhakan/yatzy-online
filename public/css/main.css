@@ -8,6 +8,8 @@
   --size-5: 4rem;
   --size-6: 4.8rem;
   --size-7: 5.6rem;
+  
+  --size-log: 20rem;
 
   --primary: #00b9ae;
   --success: #98ce00;
@@ -57,9 +59,9 @@ body {
 .player-form-wrapper {
   display: flex;
   flex: 1;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: var(--size-7);
 }
 
 .other-players-wrapper {
@@ -70,9 +72,20 @@ body {
   margin-top: var(--size-2);
 }
 
+.other-players-wrapper ul {
+  max-height: var(--size-log);
+  overflow: scroll;
+}
+
+.network-log-wrapper ul {
+  max-height: var(--size-log);
+  overflow: scroll;
+}
+
 .other-players-wrapper li,
 .network-log-wrapper li {
   padding: var(--size-1) 0;
+  line-height: 1.2;
 }
 
 .other-players-title,
