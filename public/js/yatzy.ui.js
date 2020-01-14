@@ -8,7 +8,7 @@ $(function() {
 		dicePanel = $("#dicePanel"),
 		$diceImages = $("#imgList img"),
 		$rollButton = $("#rollBtn"),
-		playerForm = $("#playerForm"),
+		playerForm = $("#playerFormWrapper"),
 		$submitPlayerNameBtn = $("#submitPlayerNameBtn"),
 		$players = $("#players"),
 		$networkLog = $("#networkLog"),
@@ -136,7 +136,7 @@ $(function() {
 		$("#imgList")
 			.one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
 
-				if (firstTransitionDone === false) {
+				if (!firstTransitionDone) {
 					changeDiceImages(dice);
 					setRoundText(rollNumber + 1);
 
@@ -648,7 +648,7 @@ $(function() {
 	function changeDiceImages(dice) {
 		"use strict";
 		$diceImages.each(function(i) {
-			$(this).prop("src", "resources/d" + dice[i].val + ".png");
+			$(this).prop("src", "images/d" + dice[i].val + ".svg");
 		});
 	}
 

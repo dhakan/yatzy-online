@@ -15,18 +15,39 @@
 		</div>
 		<div id="content">
 			<div id="dicePanel">
-				<h2 id="playerName"></h2>
-				<ul id="imgList">
-					<li><img src="resources/d1.png"><input type="checkbox"></input></li>
-					<li><img src="resources/d2.png"><input type="checkbox"></input></li>
-					<li><img src="resources/d3.png"><input type="checkbox"></input></li>
-					<li><img src="resources/d4.png"><input type="checkbox"></input></li>
-					<li><img src="resources/d5.png"><input type="checkbox"></input></li>
-				</ul>
-				<input id="rollBtn" type="button" value="Roll"></input>
-				<h2 id="roundText"></h2>
+				<div class="dice-flex-wrapper">
+					<h2 id="playerName"></h2>
+					<ul id="imgList">
+						<li>
+							<img src="images/d1.svg" alt="First die">	
+							<input type="checkbox"></input>
+						</li>
+						<li>
+							<img src="images/d2.svg" alt="Second die">
+							<input type="checkbox"></input>
+						</li>
+						<li>
+							<img src="images/d3.svg" alt="Third die">
+							<input type="checkbox"></input>
+						</li>
+						<li>
+							<img src="images/d4.svg" alt="Fourth die">
+							<input type="checkbox"></input>
+						</li>
+						<li>  
+							<img src="images/d5.svg" alt="Fifth die">						  
+							<input type="checkbox"></input>
+						</li>
+						<li>  
+							<img src="images/d6.svg" alt="Sixth die">						  
+							<input type="checkbox"></input>
+						</li>
+					</ul>
+					<button id="rollBtn" class="btn primary-btn" type="button">Roll</button>
+					<h2 id="roundText"></h2>
+				</div>
 			</div>
-			<div class="player-form-wrapper">
+			<div id="playerFormWrapper" class="player-form-wrapper">
 				<div id="playerForm">
 					<div>
 						<span id="onlineStatus" class="offline">You are offline</span>
