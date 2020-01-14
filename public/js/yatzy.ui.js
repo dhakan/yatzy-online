@@ -174,13 +174,13 @@ $(function() {
 	});
 
 	yatzy.websocket.onConnectedSuccessfully(function() {
-		$onlineStatus.removeClass("offline").addClass("online").text("ONLINE");
+		$onlineStatus.removeClass("offline").addClass("online").text("You are online");
 
 		logNewMessage("You are now connected");
 	});
 
 	yatzy.websocket.onDisconnected(function() {
-		$onlineStatus.removeClass("online").addClass("offline").text("OFFLINE");
+		$onlineStatus.removeClass("online").addClass("offline").text("You are offline");
 
 		logNewMessage("You disconnected");
 	});
