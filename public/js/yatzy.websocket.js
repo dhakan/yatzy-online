@@ -141,8 +141,8 @@ yatzy.websocket = (function() {
 			});
 		},
 		onPlayerNameSubmittedSuccessfully: function(callback) {
-			socket.on(protocol.PLAYER_NAME_SUBMITTED_SUCCESSFULLY, function(playerName) {
-				callback(playerName);
+			socket.on(protocol.PLAYER_NAME_SUBMITTED_SUCCESSFULLY, function(player) {
+				callback(player);
 			});
 		},
 		onPlayGameWithYourRoundFirst: function(callback) {

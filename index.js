@@ -94,7 +94,7 @@ io.on(protocol.PEER_CONNECTED, function(socket) {
 			sockets.push(socket);
 			players.push(player);
 
-			socket.emit(protocol.PLAYER_NAME_SUBMITTED_SUCCESSFULLY, playerName);
+			socket.emit(protocol.PLAYER_NAME_SUBMITTED_SUCCESSFULLY, player);
 			socket.broadcast.emit(protocol.PLAYER_CONNECTED, player);
 
 		} else if (getNameIsAlreadyChosenByYourself(playerName)) {
@@ -105,7 +105,7 @@ io.on(protocol.PEER_CONNECTED, function(socket) {
 
 		} else {
 			var playerWithNameChanged = getPlayerAfterNameHasBeenChanged(playerName);
-			socket.emit(protocol.PLAYER_NAME_SUBMITTED_SUCCESSFULLY, playerWithNameChanged.newName);
+			socket.emit(protocol.PLAYER_NAME_SUBMITTED_SUCCESSFULLY, playerWithNameChanged);
 			socket.broadcast.emit(protocol.PLAYER_CHANGED_NAME, playerWithNameChanged);
 		}
 	});

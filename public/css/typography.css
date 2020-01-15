@@ -1,0 +1,9 @@
+body {
+  height: 100%;
+  font-size: var(--size-2);
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+    font-size: var(--size-2);
+}
