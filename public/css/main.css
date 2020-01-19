@@ -176,6 +176,10 @@ body {
   display: none;
 }
 
+#roundText {
+  margin-top: var(--size-1);
+}
+
 #infoPanel {
 }
 
