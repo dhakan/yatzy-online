@@ -9,7 +9,7 @@ $(function() {
     $submitPlayerNameBtn = $("#submitPlayerNameBtn"),
     $players = $("#players"),
     $networkLog = $("#networkLog"),
-    $onlineStatus = $("#onlineStatus"),
+    // $onlineStatus = $("#onlineStatus"),
     submittedPlayerName,
     playerYatzyColumn,
     numberOfPlayerScoreboardCellsFilled,
@@ -143,6 +143,8 @@ $(function() {
 
           if (rollNumber === 2) {
             fadeInDices();
+            changeDicePanelActiveState(true);
+            console.log("rollNumber is 2");
           }
 
           firstTransitionDone = true;
@@ -181,20 +183,20 @@ $(function() {
     updateDiceImagesAndRollNumber(data.dice, data.rollNumber);
   });
 
-  yatzy.websocket.onConnectedSuccessfully(function() {
-    $onlineStatus
-      .removeClass("offline")
-      .addClass("online")
-      .text("You are online");
+  //   yatzy.websocket.onConnectedSuccessfully(function() {
+  //     $onlineStatus
+  //       .removeClass("offline")
+  //       .addClass("online")
+  //       .text("You are online");
 
-    logNewMessage("You are now connected");
-  });
+  //     logNewMessage("You are now connected");
+  //   });
 
   yatzy.websocket.onDisconnected(function() {
-    $onlineStatus
-      .removeClass("online")
-      .addClass("offline")
-      .text("You are offline");
+    // $onlineStatus
+    //   .removeClass("online")
+    //   .addClass("offline")
+    //   .text("You are offline");
 
     inactivatePlayButton();
 
@@ -660,6 +662,7 @@ $(function() {
     var isYourTurn = playerYatzyColumn === playerTurn;
 
     if (isYourTurn) {
+      console.log("onPlayNextRound");
       changeDicePanelActiveState(false);
     } else {
       changeDicePanelActiveState(true);
@@ -688,6 +691,7 @@ $(function() {
       500,
       function() {
         $diceImages.css("visibility", "hidden");
+        $diceImages.prop("src", "images/d0.svg");
       }
     );
   }
@@ -697,10 +701,8 @@ $(function() {
     $rollButton.prop("disabled", inactivate);
 
     if (inactivate) {
-      $rollButton.css("opacity", 0.2);
       $diceImages.off("click", diceClick);
     } else {
-      $rollButton.css("opacity", 1);
       $diceImages.on("click", diceClick);
     }
   }
@@ -761,7 +763,7 @@ $(function() {
 });
 
 function setRoundText(rollNr) {
-  $("#roundText").text("ROLL " + rollNr);
+  $("#roundText").text(`${3 - rollNr} roll(s) left`);
 }
 
 function setPlayerName(name) {

@@ -56,9 +56,9 @@ body {
 .player-form-wrapper {
   display: flex;
   flex: 1;
-  align-items: center;
   flex-direction: column;
   margin-top: var(--size-7);
+  margin-left: var(--size-7);
 }
 
 .other-players-wrapper {
@@ -109,14 +109,14 @@ body {
   margin-top: var(--size-1);
 }
 
-#onlineStatus {
+/* #onlineStatus {
   display: inline-block;
   font-size: var(--size-2);
   padding: var(--size-1) var(--size-1);
-}
+} */
 
 #networkLog li {
-  transition: transform 800ms ease-in-out;
+  transition: transform 300ms ease-in-out;
 }
 
 .online {
@@ -133,6 +133,8 @@ body {
 
 #dicePanel {
   margin-top: var(--size-7);
+  /* If this is margin the rotated die is cut off */
+  padding-left: var(--size-7);
   overflow: scroll;
 }
 
@@ -143,7 +145,6 @@ body {
 #dicePanel.visible {
   display: flex;
   flex: 1;
-  justify-content: center;
 }
 
 #dicePanel li {
@@ -166,10 +167,14 @@ body {
 
 #imgList {
   display: flex;
+  margin-left: calc(var(--size-1) * -1);
+  margin-right: calc(var(--size-1) * -1);
 }
 
 #imgList img {
   transition: transform 1000ms ease-in-out;
+  padding-left: var(--size-1);
+  padding-right: var(--size-1);
 }
 
 #imgList input {
@@ -190,12 +195,20 @@ body {
   height: 100%;
 }
 
-#scoreTable tr,
+#scoreTable table {
+  border-collapse: collapse;
+}
+
 #scoreTable td {
-  border-bottom: 1px solid var(--divider);
-  text-align: center;
+  border: 1px solid var(--divider);
   font-size: var(--size-3);
-  padding: var(--size-1);
+  padding: var(--size-1) var(--size-2);
+  white-space: nowrap;
+}
+
+#scoreTable .scoreBoardCells {
+  text-align: center;
+  padding: 0;
 }
 
 #scoreTable .noClickRow {
@@ -249,7 +262,7 @@ td {
   color: white;
 }
 
-.primary-btn:hover {
+.primary-btn:hover:not([disabled]) {
   background: hsla(176, 70%, 36%, 1);
 }
 
@@ -259,7 +272,7 @@ td {
   color: var(--primary);
 }
 
-.info-btn:hover {
+.info-btn:hover:not([disabled]) {
   background: var(--primary);
   color: white;
 }

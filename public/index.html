@@ -14,6 +14,33 @@
 			<h1>YATZY ONLINE</h1>
 		</div>
 		<div id="content">
+			<div id="infoPanel">
+				<div id="scoreTable">
+					<table>
+						<tbody>
+							<tr class="noClickRow"><td><strong>PLAYERS</strong></td></tr>
+							<tr id="acesRow" class="upperSection"><td>Aces</td></tr>
+							<tr id="twosRow" class="upperSection"><td>Twos</td></tr>
+							<tr id="threesRow" class="upperSection"><td>Threes</td></tr>
+							<tr id="foursRow" class="upperSection"><td>Fours</td></tr>
+							<tr id="fivesRow" class="upperSection"><td>Fives</td></tr>
+							<tr id="sixesRow" class="upperSection"><td>Sixes</td></tr>
+							<tr id="subTotalRow" class="noClickRow totalScore"><td><strong>SUBTOTAL</strong></td></tr>
+							<tr id="bonusRow" class="noClickRow totalScore"><td><strong>BONUS</strong></td></tr>
+							<tr id="onePairRow" class="totalScore"><td>One pair</td></tr>
+							<tr id="twoPairsRow" class="totalScore"><td>Two pairs</td></tr>
+							<tr id="threeOfAKindRow" class="totalScore"><td>Three of a kind</td></tr>
+							<tr id="fourOfAKindRow" class="totalScore"><td>Four of a kind</td></tr>
+							<tr id="smallStraightRow" class="totalScore"><td>Small straight</td></tr>
+							<tr id="bigStraightRow" class="totalScore"><td>Big straight</td></tr>
+							<tr id="fullHouseRow" class="totalScore"><td>Full house</td></tr>
+							<tr id="chanceRow" class="totalScore"><td>Chance</td></tr>
+							<tr id="yatzyRow" class="totalScore"><td>Yatzy</td></tr>
+							<tr id="totalRow" class="noClickRow"><td><strong>TOTAL</strong></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 			<div id="dicePanel" class="hidden">
 				<div class="dice-flex-wrapper">
 					<h2 id="playerName"></h2>
@@ -51,47 +78,20 @@
 					<input id="playerNameInput" type="text" placeholder="Your player name" autofocus>
 					<div class="button-group">
 						<div>
-							<button id="submitPlayerNameBtn" class="btn info-btn" type="button">Enter lobby</button>
+							<button id="submitPlayerNameBtn" class="btn info-btn" type="button">Join</button>
 						</div>
 						<div>
 							<button id="playBtn" class="btn primary-btn" type="button" disabled>Start game</button>
 						</div>
 					</div>
 					<div class="other-players-wrapper">
-						<h2 class="other-players-title">Players in the lobby</h2>
+						<h2 class="other-players-title">Players joined</h2>
 						<ul id="players"></ul>
 					</div>
 					<div class="network-log-wrapper">
-						<h2 class="network-log-title">Network log</h2>
+						<h2 class="network-log-title">Info log</h2>
 						<ul id="networkLog"></ul>
 					</div>
-				</div>
-			</div>
-			<div id="infoPanel">
-				<div id="scoreTable">
-					<table>
-						<tbody>
-							<tr class="noClickRow"><td><strong>PLAYERS</strong></td></tr>
-							<tr id="acesRow" class="upperSection"><td>Aces</td></tr>
-							<tr id="twosRow" class="upperSection"><td>Twos</td></tr>
-							<tr id="threesRow" class="upperSection"><td>Threes</td></tr>
-							<tr id="foursRow" class="upperSection"><td>Fours</td></tr>
-							<tr id="fivesRow" class="upperSection"><td>Fives</td></tr>
-							<tr id="sixesRow" class="upperSection"><td>Sixes</td></tr>
-							<tr id="subTotalRow" class="noClickRow totalScore"><td><strong>SUBTOTAL</strong></td></tr>
-							<tr id="bonusRow" class="noClickRow totalScore"><td><strong>BONUS</strong></td></tr>
-							<tr id="onePairRow" class="totalScore"><td>One pair</td></tr>
-							<tr id="twoPairsRow" class="totalScore"><td>Two pairs</td></tr>
-							<tr id="threeOfAKindRow" class="totalScore"><td>Three of a kind</td></tr>
-							<tr id="fourOfAKindRow" class="totalScore"><td>Four of a kind</td></tr>
-							<tr id="smallStraightRow" class="totalScore"><td>Small straight</td></tr>
-							<tr id="bigStraightRow" class="totalScore"><td>Big straight</td></tr>
-							<tr id="fullHouseRow" class="totalScore"><td>Full house</td></tr>
-							<tr id="chanceRow" class="totalScore"><td>Chance</td></tr>
-							<tr id="yatzyRow" class="totalScore"><td>Yatzy</td></tr>
-							<tr id="totalRow" class="noClickRow"><td><strong>TOTAL</strong></td></tr>
-						</tbody>
-					</table>
 				</div>
 			</div>
 		</div>
